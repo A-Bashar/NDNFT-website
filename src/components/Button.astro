@@ -1,0 +1,14 @@
+---
+type Props = { href: string; variant: "primary" | "secondary" };
+type Styles = { primary: string; secondary: string };
+let { href, variant } = Astro.props;
+let styles: Styles = {
+	primary: "bg-gradient text-black",
+	secondary:
+		"bg-none border-2 border-white/65 hover:bg-white/10 transition duration-200 ease-in-out ",
+};
+---
+
+<a href={href} class={`pb-3 pt-2 px-8 rounded-2xl${" " + styles[variant]}`}
+	><h4><slot /></h4></a
+>

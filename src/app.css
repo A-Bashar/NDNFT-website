@@ -43,4 +43,34 @@
 		line-height: 128%;
 		letter-spacing: 1%;
 	}
+	.gradient-text {
+		background: rgb(86, 245, 255);
+		background: linear-gradient(
+			45deg,
+			rgba(86, 245, 255, 1) 0%,
+			rgba(246, 140, 191, 1) 50%,
+			rgba(255, 235, 51, 1) 100%
+		);
+		background-clip: text;
+		color: transparent;
+	}
+	@property --gradient-angle {
+		syntax: "<angle>";
+		inherits: false;
+		initial-value: 0deg;
+	}
+	.bg-gradient {
+		--gradient-angle: 15deg;
+		background: rgb(86, 245, 255);
+		background: linear-gradient(
+			var(--gradient-angle),
+			rgba(255, 235, 51, 1) -25%,
+			rgba(246, 140, 191, 1) 50%,
+			rgba(86, 245, 255, 1) 125%
+		);
+		transition: --gradient-angle 300ms ease-in-out;
+	}
+	.bg-gradient:hover {
+		--gradient-angle: 90deg;
+	}
 }

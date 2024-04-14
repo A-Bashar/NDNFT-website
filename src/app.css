@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Biryani:wght@200;300;400;600;700;800;900&family=Darker+Grotesque:wght@300..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	h1 {
+		font-family: "Darker Grotesque", sans-serif;
+		font-weight: 600;
+		font-size: 6rem;
+		line-height: 93%;
+		letter-spacing: 3%;
+	}
+	h2 {
+		font-family: "Darker Grotesque", sans-serif;
+		font-weight: 600;
+		font-size: 2.5rem;
+	}
+	h3 {
+		font-family: "Darker Grotesque", sans-serif;
+		font-weight: 600;
+		font-size: 2rem;
+	}
+	h4 {
+		font-family: "Darker Grotesque", sans-serif;
+		font-weight: 600;
+		font-size: 1.5rem;
+	}
+	p {
+		font-family: "Barlow", sans-serif;
+		font-weight: 300;
+		font-size: 1.25rem;
+		line-height: 128%;
+		letter-spacing: 1%;
+	}
+}
+
+@layer utilities {
+	.light {
+		font-family: "Biryani", sans-serif;
+		font-weight: 300;
+		font-size: 0.75rem;
+		line-height: 128%;
+		letter-spacing: 1%;
+	}
+}

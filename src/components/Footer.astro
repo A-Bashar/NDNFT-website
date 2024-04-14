@@ -1,0 +1,33 @@
+---
+import LogoImage from "../assets/logo.svg";
+import { Image } from "astro:assets";
+---
+
+<footer class="footer mt-8 mb-8">
+	<div class="logo flex gap-4 mb-5">
+		<Image src={LogoImage} height="40" width="40" alt="" />
+		<p class="text-3xl tracking-[0.0375rem] font-bold">NDNFTs</p>
+	</div>
+	<div class="flex justify-between">
+		<nav class="navlinks">
+			<ul class="flex gap-8 font-heading font-semibold text-[1.5rem]">
+				<ul>
+					<a href="/"></a>Home
+				</ul>
+				<ul>
+					<a href="/marketplace">Marketplace</a>
+				</ul>
+				<ul>
+					<a href="#">Inventory</a>
+				</ul>
+				<ul>
+					<a href="#">Community</a>
+				</ul>
+				<ul>
+					<a href="#">Help</a>
+				</ul>
+			</ul>
+		</nav>
+		<h4>&copy; Azizul Bashar 2024</h4>
+	</div>
+</footer>

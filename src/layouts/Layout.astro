@@ -1,5 +1,6 @@
 ---
 import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
 interface Props {
 	title: string;
 }
@@ -17,8 +18,13 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-black text-white">
-		<div class="container mx-auto"><NavBar /></div>
-		<slot />
+	<body
+		class="bg-black text-white min-h-screen flex flex-col justify-between"
+	>
+		<div class="w-full">
+			<div class="container mx-auto"><NavBar /></div>
+			<slot />
+		</div>
+		<div class="container mx-auto"><Footer /></div>
 	</body>
 </html>

@@ -1,0 +1,48 @@
+---
+import LogoImage from "../assets/logo.svg";
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import ButtonDeco1 from "../assets/button-deco-tl.svg";
+import ButtonDeco2 from "../assets/button-deco-br.svg";
+---
+
+<div class="navbar mt-8 flex justify-between">
+	<div class="logo flex gap-4">
+		<Image src={LogoImage} height="40" width="40" alt="" />
+		<p class="text-3xl tracking-[0.0375rem] font-bold">NDNFTs</p>
+	</div>
+	<nav class="navlinks">
+		<ul class="flex gap-8 font-heading font-semibold text-[1.5rem]">
+			<ul class="hover:gradient-text ease-linear transition duration-200">
+				<a href="/"></a>Home
+			</ul>
+			<ul class="hover:gradient-text ease-linear transition duration-200">
+				<a href="/marketplace">Marketplace</a>
+			</ul>
+			<ul class="hover:gradient-text ease-linear transition duration-200">
+				<a href="#">Inventory</a>
+			</ul>
+			<ul class="hover:gradient-text ease-linear transition duration-200">
+				<a href="#">Community</a>
+			</ul>
+			<ul class="hover:gradient-text ease-linear transition duration-200">
+				<a href="#">Help</a>
+			</ul>
+		</ul>
+	</nav>
+	<Button variant="primary" href="/connect">
+		<Image
+			src={ButtonDeco1}
+			height="24"
+			alt=""
+			class="absolute top-[-16px] left-[-16px]"
+		/>
+		Connect Wallet
+		<Image
+			src={ButtonDeco2}
+			height="24"
+			alt=""
+			class="absolute bottom-[-16px] right-[-16px]"
+		/>
+	</Button>
+</div>

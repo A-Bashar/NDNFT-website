@@ -11,7 +11,7 @@ import ButtonDeco2 from "../assets/button-deco-br.svg";
 		<Image src={LogoImage} height="40" width="40" alt="" loading="eager" />
 		<p class="text-3xl tracking-[0.0375rem] font-bold">NDNFTs</p>
 	</div>
-	<nav class="navlinks">
+	<nav class="navlinks lg:block hidden">
 		<ul class="flex gap-8 font-heading font-semibold text-[1.5rem]">
 			<ul class="hover:gradient-text ease-linear transition duration-200">
 				<a href="/"></a>Home
@@ -30,19 +30,21 @@ import ButtonDeco2 from "../assets/button-deco-br.svg";
 			</ul>
 		</ul>
 	</nav>
-	<Button variant="primary" href="/connect">
-		<Image
-			src={ButtonDeco1}
-			height="24"
-			alt=""
-			class="absolute top-[-16px] left-[-16px]"
-		/>
-		Connect Wallet
-		<Image
-			src={ButtonDeco2}
-			height="24"
-			alt=""
-			class="absolute bottom-[-16px] right-[-16px]"
-		/>
-	</Button>
+	<div class="hidden md:flex">
+		<Button variant="primary" href="/connect">
+			<Image
+				src={ButtonDeco1}
+				height="24"
+				alt=""
+				class="absolute top-[-16px] left-[-16px]"
+			/>
+			Connect Wallet
+			<Image
+				src={ButtonDeco2}
+				height="24"
+				alt=""
+				class="absolute bottom-[-16px] right-[-16px]"
+			/>
+		</Button>
+	</div>
 </div>

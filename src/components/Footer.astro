@@ -6,11 +6,13 @@ import { Image } from "astro:assets";
 <footer class="footer mt-8 mb-8">
 	<div class="logo flex gap-4 mb-5">
 		<Image src={LogoImage} height="40" width="40" alt="" loading="eager" />
-		<p class="text-3xl tracking-[0.0375rem] font-bold">NDNFTs</p>
+		<p class="xl:text-3xl tracking-[0.0375rem] font-bold">NDNFTs</p>
 	</div>
-	<div class="flex justify-between">
+	<div class="flex-col md:flex-row gap-5 flex md:justify-between">
 		<nav class="navlinks">
-			<ul class="flex gap-8 font-heading font-semibold text-[1.5rem]">
+			<ul
+				class="flex-col md:flex-row flex gap-1 md:gap-8 font-heading font-semibold text-[1.5rem]"
+			>
 				<ul>
 					<a href="/"></a>Home
 				</ul>

@@ -9,10 +9,18 @@ import ButtonDeco2 from "../assets/button-deco-br.svg";
 ---
 
 <div class="navbar mt-8 flex justify-between">
-	<div class="logo flex gap-4 items-center">
-		<Image src={LogoImage} height="40" width="40" alt="" loading="eager" />
-		<p class="text-3xl tracking-[0.0375rem] font-bold">NDNFTs</p>
-	</div>
+	<a href="/">
+		<div class="logo flex gap-4 items-center">
+			<Image
+				src={LogoImage}
+				height="40"
+				width="40"
+				alt=""
+				loading="eager"
+			/>
+			<p class="text-3xl tracking-[0.0375rem] font-bold">NDNFTs</p>
+		</div>
+	</a>
 
 	<nav class="navlinks lg:block hidden">
 		<ul class="flex gap-8 font-heading font-semibold text-[1.5rem]">

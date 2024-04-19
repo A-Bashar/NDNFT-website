@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
+import ConnectImage from "../assets/connect.png";
+import MetamaskIcon from "../assets/wallet-logo/metamask.svg";
+import CoinbaseIcon from "../assets/wallet-logo/coinbase.svg";
+
+import "../app.css";
+---
+
+<Layout title="NDNFTs">
+	<div class="w-screen overflow-hidden">
+		<div
+			class="deco1 h-32 w-32 bg-gradient-to-br from-blue via-pink to-yellow rounded-full blur-[120px] z-[-1] absolute top-[15rem] left-[10rem]"
+		>
+		</div>
+		<div
+			class="deco2 h-32 w-32 bg-gradient-to-br from-pink via-blue to-yellow rounded-full blur-[150px] z-[-1] absolute top-[40rem] left-[50rem] hidden lg:block"
+		>
+		</div>
+	</div>
+
+	<div
+		class="container px-5 mx-auto flex gap-4 mt-16 flex-col md:flex-row mb-10"
+	>
+		<div class="hero-image w-[50%] flex items-center">
+			<div class="aspect-square h-auto w-full flex justify-end">
+				<Image class="w-full" src={ConnectImage} alt="" />
+			</div>
+		</div>
+		<div class="md:w-[50%] flex flex-col justify-center gap-4">
+			<h1>Connect your Wallet.</h1>
+			<h4>
+				Connect your crypto wallet and go on your NFT shopping spree!
+			</h4>
+			<div class="flex flex-col xl:flex-row gap-4">
+				<a
+					href="#"
+					class="flex gap-3 bg-[#EA7C28] hover:bg-[#EF8C41] transition-colors py-2 px-4 rounded-xl items-center justify-center w-full"
+				>
+					<Image src={MetamaskIcon} alt="metamask icon" />
+					<h4>Connect MetaMask</h4>
+				</a>
+				<a
+					href="#"
+					class="flex gap-3 bg-[#2875EA] hover:bg-[#478CF3] transition-colors py-2 px-4 rounded-xl items-center justify-center w-full"
+				>
+					<Image src={CoinbaseIcon} alt="coinbase icon" />
+					<h4>Connect Coinbase</h4>
+				</a>
+			</div>
+			<p>
+				Dont have a crypt wallet yet? Check out how to <span
+					class="gradient-text underline"
+					><a href="#">create one</a></span
+				>!
+			</p>
+		</div>
+	</div>
+</Layout>

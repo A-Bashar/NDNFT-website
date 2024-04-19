@@ -1,0 +1,29 @@
+---
+import Button from "./Button.astro";
+const { image, title, id, price } = Astro.props;
+---
+
+<div class="card w-52 relative">
+	<div class="w-16 h-16 bg-blue rounded-full absolute top-1 left-1"></div>
+	<div class="w-16 h-16 bg-yellow rounded-full absolute bottom-1 right-1">
+	</div>
+	<div
+		class="w-52 bg-grey bg-opacity-30 p-3 border-white/10 border-2 rounded-[32px] flex flex-col gap-2 backdrop-blur-3xl"
+	>
+		<div
+			class=`w-full aspect-square rounded-3xl bg-[url('nft-images/${id}.jpg')] bg-cover`
+			style=`background-image: url('${image}')`
+		>
+		</div>
+		<h4 class="title truncate w-full px-2 gradient-text">{title}</h4>
+		<div
+			class="price-buy flex flex-col items-center gap-4 justify-between w-full mt-3"
+		>
+			<Button
+				fwidth={true}
+				variant="primary"
+				href={`/marketplace/item/${id}`}>{price}</Button
+			>
+		</div>
+	</div>
+</div>

@@ -21,10 +21,44 @@ const { title } = Astro.props;
 	<body
 		class="bg-black text-white min-h-screen flex flex-col justify-between"
 	>
-		<div class="w-full px-5">
-			<div class="container mx-auto"><NavBar /></div>
+		<div
+			class="h-20 w-20 border-white/10 border-2 rounded-full z-20 opacity-0"
+			id="mouseCursor"
+		>
+		</div>
+		<div class="w-full">
+			<div class="container mx-auto px-5"><NavBar /></div>
 			<slot />
 		</div>
 		<div class="container mx-auto px-5"><Footer /></div>
+		<script>
+			const touchDevice =
+				"ontouchstart" in window ||
+				navigator.maxTouchPoints > 0 ||
+				navigator.msMaxTouchPoints > 0;
+			if (touchDevice) {
+				document
+					.getElementById("mouseCursor")
+					?.style.setProperty("display", "none");
+			}
+
+			document.addEventListener(
+				"mousemove",
+				function (ev) {
+					if (!touchDevice) {
+						document
+							.getElementById("mouseCursor")
+							?.style.setProperty("opacity", "1");
+						document.getElementById("mouseCursor").style.transform =
+							"translateY(" + (ev.clientY - 35) + "px)";
+						document.getElementById(
+							"mouseCursor"
+						).style.transform +=
+							"translateX(" + (ev.clientX - 38) + "px)";
+					}
+				},
+				false
+			);
+		</script>
 	</body>
 </html>

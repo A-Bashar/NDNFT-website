@@ -1,5 +1,6 @@
 ---
 import LogoImage from "../assets/logo.svg";
+import MenuIcon from "../assets/menu.svg";
 import { Image } from "astro:assets";
 import Button from "./Button.astro";
 import ButtonDeco1 from "../assets/button-deco-tl.svg";
@@ -11,6 +12,7 @@ import ButtonDeco2 from "../assets/button-deco-br.svg";
 		<Image src={LogoImage} height="40" width="40" alt="" loading="eager" />
 		<p class="text-3xl tracking-[0.0375rem] font-bold">NDNFTs</p>
 	</div>
+
 	<nav class="navlinks lg:block hidden">
 		<ul class="flex gap-8 font-heading font-semibold text-[1.5rem]">
 			<ul class="hover:gradient-text ease-linear transition duration-200">
@@ -30,21 +32,68 @@ import ButtonDeco2 from "../assets/button-deco-br.svg";
 			</ul>
 		</ul>
 	</nav>
-	<div class="hidden md:flex">
-		<Button variant="primary" href="/connect">
+	<div class="flex gap-4">
+		<div class="hidden md:flex">
+			<Button variant="primary" href="/connect">
+				<Image
+					src={ButtonDeco1}
+					height="24"
+					alt=""
+					class="absolute top-[-16px] left-[-16px]"
+				/>
+				Connect Wallet
+				<Image
+					src={ButtonDeco2}
+					height="24"
+					alt=""
+					class="absolute bottom-[-16px] right-[-16px]"
+				/>
+			</Button>
+		</div>
+		<div class="mobile menu-btn lg:hidden" id="menuBtn">
 			<Image
-				src={ButtonDeco1}
-				height="24"
-				alt=""
-				class="absolute top-[-16px] left-[-16px]"
+				src={MenuIcon}
+				height="50"
+				width="50"
+				alt="navigation menu button"
 			/>
-			Connect Wallet
-			<Image
-				src={ButtonDeco2}
-				height="24"
-				alt=""
-				class="absolute bottom-[-16px] right-[-16px]"
-			/>
-		</Button>
+		</div>
 	</div>
 </div>
+
+<div class="darkness fixed bg-black/50 h-screen w-screen z-10 hidden"></div>
+<div
+	class="nav-menu fixed h-screen top-0 pt-16 right-[-500px] pr-6 pl-10 bg-black shadow-black shadow-2xl z-20 hidden transition-[right 300ms]"
+	id="navMenu"
+>
+	<nav class="navlinks">
+		<ul
+			class="flex items-end flex-col gap-8 font-heading font-semibold text-[1.5rem]"
+		>
+			<ul class="hover:gradient-text ease-linear transition duration-200">
+				<a href="/"></a>Home
+			</ul>
+			<ul class="hover:gradient-text ease-linear transition duration-200">
+				<a href="/marketplace">Marketplace</a>
+			</ul>
+			<ul class="hover:gradient-text ease-linear transition duration-200">
+				<a href="#">Inventory</a>
+			</ul>
+			<ul class="hover:gradient-text ease-linear transition duration-200">
+				<a href="#">Community</a>
+			</ul>
+			<ul class="hover:gradient-text ease-linear transition duration-200">
+				<a href="#">Help</a>
+			</ul>
+		</ul>
+	</nav>
+</div>
+
+<script>
+	const Btn = document.getElementById("menuBtn");
+	const Menu = document.getElementById("navMenu");
+	Btn?.addEventListener("click", () => {
+		Menu?.style.setProperty("display", "block");
+		Menu?.style.setProperty("right", "0");
+	});
+</script>

@@ -14,6 +14,7 @@
 	h2 {
 		font-family: "Darker Grotesque", sans-serif;
 		font-weight: 600;
+		line-height: 95%;
 		@apply text-[2.5rem];
 	}
 	h3 {
@@ -32,6 +33,13 @@
 		line-height: 128%;
 		letter-spacing: 1%;
 		@apply text-[1.25rem];
+	}
+	#mouseCursor {
+		position: fixed; /* Floating above */
+		pointer-events: none; /* Allow clicking trough the div */
+	}
+	button {
+		cursor: pointer;
 	}
 }
 
@@ -72,5 +80,15 @@
 	}
 	.bg-gradient:hover {
 		--gradient-angle: 90deg;
+	}
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.no-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
 	}
 }

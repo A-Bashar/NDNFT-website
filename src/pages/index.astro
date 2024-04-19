@@ -3,15 +3,38 @@ import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import { Image } from "astro:assets";
 import HeroImage from "../assets/hero-image.png";
+import SubscribeImage from "../assets/subscribe.png";
 import Bitcoin from "../assets/coin-logos/bitcoin-logo.svg";
 import Ethereum from "../assets/coin-logos/ethereum-logo.svg";
 import Litecoin from "../assets/coin-logos/litecoin-logo.svg";
 import "../app.css";
+import Card from "../components/Card.astro";
+import Data from "../nft-data.json";
+
+function shuffleArray(array: any[]) {
+	// Fisher-Yates shuffle algorithm
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	}
+	return array;
+}
 ---
 
 <Layout title="NDNFTs">
+	<div class="w-screen overflow-hidden">
+		<div
+			class="deco1 h-32 w-32 bg-gradient-to-br from-blue via-pink to-yellow rounded-full blur-[120px] z-[-1] absolute top-[15rem] left-[10rem]"
+		>
+		</div>
+		<div
+			class="deco2 h-32 w-32 bg-gradient-to-br from-pink via-blue to-yellow rounded-full blur-[150px] z-[-1] absolute top-[40rem] left-[50rem] hidden lg:block"
+		>
+		</div>
+	</div>
+
 	<div
-		class="hero-section container mx-auto flex gap-8 mt-16 flex-col md:flex-row"
+		class="hero-section container px-5 mx-auto flex gap-8 mt-16 flex-col md:flex-row"
 	>
 		<div class="hero-text md:w-[50%] flex flex-col justify-center gap-10">
 			<h1>
@@ -19,7 +42,10 @@ import "../app.css";
 				collect the rarest ones
 			</h1>
 			<div class="buttons w-fit flex gap-5 flex-col lg:flex-row">
-				<Button variant="primary" href="/connect">Connect Wallet</Button
+				<a
+					href="/connect"
+					class={"text-center relative flex justify-center items-center pt-2 pb-3 px-5 rounded-2xl bg-gradient text-black"}
+					><h4>Connect Wallet</h4></a
 				>
 				<Button variant="secondary" href="/marketplace"
 					>Browse Marketplace</Button
@@ -31,9 +57,89 @@ import "../app.css";
 				<Image src={Litecoin} alt="" />
 			</div>
 		</div>
-		<div class="hero-image md:w-[50%] flex items-center">
+		<div class="hero-image hidden md:w-[50%] md:flex items-center">
 			<div class="aspect-square h-auto w-full flex justify-end">
 				<Image class="w-full" src={HeroImage} alt="" />
+			</div>
+		</div>
+	</div>
+	<div class="px-5">
+		<div
+			class="container mx-auto mt-8 border-white/30 border-2 rounded-3xl px-8 pb-8"
+		>
+			<h3 class="mb-2 mt-5">Most Popular</h3>
+			<p class="opacity-80 mb-4">
+				Ride the wave of trend and get the most popular NFTs!
+			</p>
+			<div class="flex gap-8 overflow-x-scroll no-scrollbar">
+				{
+					Data.map((i) => {
+						return (
+							<Card
+								title={i.title}
+								image={`/nft-images/${i.id}.jpg`}
+								id={i.id}
+								price={i.price}
+							/>
+						);
+					})
+				}
+			</div>
+			<h3 class="mb-2 mt-5">Top Value</h3>
+			<p class="opacity-80 mb-4">
+				Show off your riches with the most valuable NFTs!
+			</p>
+			<div class="flex gap-8 overflow-x-scroll no-scrollbar">
+				{
+					shuffleArray(Data).map((i) => {
+						return (
+							<Card
+								title={i.title}
+								image={`/nft-images/${i.id}.jpg`}
+								id={i.id}
+								price={i.price}
+							/>
+						);
+					})
+				}
+			</div>
+		</div>
+	</div>
+	<div
+		class="container px-5 mx-auto flex flex-col justify-center items-center mt-4 gap-3 text-center"
+	>
+		<h3>Want to see all of our NFT collection?</h3>
+		<Button fwidth={false} variant="secondary" href="/marketplace"
+			>Browse Marketplace</Button
+		>
+	</div>
+	<div class="bg-gradient-to-br from-blue/5 via-pink/5 to-yellow/5 py-8 mt-8">
+		<div
+			class="container px-5 mx-auto flex gap-8 flex-col md:flex-row items-center"
+		>
+			<div class="sub-image md:w-[50%] flex items-center">
+				<div class="aspect-[751/400] h-auto w-full flex justify-end">
+					<Image class="w-full" src={SubscribeImage} alt="" />
+				</div>
+			</div>
+			<div
+				class="sub-text md:w-[50%] flex flex-col justify-center gap-10"
+			>
+				<h2>Get the best NFTs delivered to you every week.</h2>
+				<p>
+					Subscribe to our newsletter, we curate the best NFTs from
+					our market and send them right to your inbox!
+				</p>
+				<div class="form flex gap-4">
+					<input
+						class="bg-white/10 rounded-[16px] h-[64px] w-full p-5 border-white/30 border-2"
+						type="email"
+						name="email"
+						id="email"
+						placeholder="Enter your email adress..."
+					/>
+					<Button variant="secondary" href="#">SUBSCRIBE</Button>
+				</div>
 			</div>
 		</div>
 	</div>

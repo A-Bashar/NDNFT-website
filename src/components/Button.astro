@@ -1,16 +1,22 @@
 ---
-type Props = { href: string; variant: "primary" | "secondary" };
-type Styles = { primary: string; secondary: string };
-let { href, variant } = Astro.props;
+type Props = {
+	href: string;
+	variant: "primary" | "secondary";
+	fwidth?: boolean;
+};
+type Styles = { primary: string; secondary: string; fullwidth: string };
+let { href, variant, fwidth } = Astro.props;
+
 let styles: Styles = {
 	primary: "bg-gradient text-black",
 	secondary:
 		"bg-none border-2 border-white/65 hover:bg-white/10 transition duration-200 ease-in-out ",
+	fullwidth: "w-full",
 };
 ---
 
 <a
 	href={href}
-	class={`text-center relative pb-3 pt-2 px-8 rounded-2xl${" " + styles[variant]}`}
+	class={`text-center relative flex justify-center items-center pt-2 pb-3 px-5 rounded-2xl${" " + styles[variant] + " " + (fwidth ? "w-full" : "w-fit")}`}
 	><h4><slot /></h4></a
 >

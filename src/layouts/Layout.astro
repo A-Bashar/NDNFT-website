@@ -32,10 +32,9 @@ const { title } = Astro.props;
 		</div>
 		<div class="container mx-auto px-5"><Footer /></div>
 		<script>
+			const mouseCursor: any = document.getElementById("mouseCursor");
 			const touchDevice =
-				"ontouchstart" in window ||
-				navigator.maxTouchPoints > 0 ||
-				navigator.msMaxTouchPoints > 0;
+				"ontouchstart" in window || navigator.maxTouchPoints > 0;
 			if (touchDevice) {
 				document
 					.getElementById("mouseCursor")
@@ -46,14 +45,10 @@ const { title } = Astro.props;
 				"mousemove",
 				function (ev) {
 					if (!touchDevice) {
-						document
-							.getElementById("mouseCursor")
-							?.style.setProperty("opacity", "1");
-						document.getElementById("mouseCursor").style.transform =
+						mouseCursor?.style.setProperty("opacity", "1");
+						mouseCursor.style.transform =
 							"translateY(" + (ev.clientY - 35) + "px)";
-						document.getElementById(
-							"mouseCursor"
-						).style.transform +=
+						mouseCursor.style.transform +=
 							"translateX(" + (ev.clientX - 38) + "px)";
 					}
 				},

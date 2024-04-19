@@ -15,5 +15,11 @@ This website is made using Astro and Tailwind. It is fully responsive on every s
 To build it into a static site, clone the repo and run this command:
 
 ```sh
-npm build
+npm run build
+```
+
+Then if you want to preview the build website, run this command:
+
+```sh
+npm run preview
 ```

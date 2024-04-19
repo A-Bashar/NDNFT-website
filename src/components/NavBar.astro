@@ -107,18 +107,14 @@ import ButtonDeco2 from "../assets/button-deco-br.svg";
 	const closeBtn = document.getElementById("closeBtn");
 	const Menu = document.getElementById("navMenu");
 	const Darkness = document.getElementById("darkness");
-	Btn?.addEventListener(
-		"click",
-		() => {
-			Menu?.style.setProperty("display", "block");
-			Darkness?.style.setProperty("display", "block");
-			setTimeout(() => {
-				Menu?.style.setProperty("right", "0");
-				Darkness?.style.setProperty("opacity", "1");
-			});
-		},
-		10
-	);
+	Btn?.addEventListener("click", () => {
+		Menu?.style.setProperty("display", "block");
+		Darkness?.style.setProperty("display", "block");
+		setTimeout(() => {
+			Menu?.style.setProperty("right", "0");
+			Darkness?.style.setProperty("opacity", "1");
+		});
+	});
 	closeBtn?.addEventListener("click", () => {
 		Menu?.style.setProperty("right", "-500px");
 		Darkness?.style.setProperty("opacity", "0");

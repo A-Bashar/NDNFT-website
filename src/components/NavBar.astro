@@ -3,6 +3,7 @@ import LogoImage from "../assets/logo.svg";
 import MenuIcon from "../assets/menu.svg";
 import { Image } from "astro:assets";
 import Button from "./Button.astro";
+import CloseIcon from "../assets/close.svg";
 import ButtonDeco1 from "../assets/button-deco-tl.svg";
 import ButtonDeco2 from "../assets/button-deco-br.svg";
 ---
@@ -16,7 +17,7 @@ import ButtonDeco2 from "../assets/button-deco-br.svg";
 	<nav class="navlinks lg:block hidden">
 		<ul class="flex gap-8 font-heading font-semibold text-[1.5rem]">
 			<ul class="hover:gradient-text ease-linear transition duration-200">
-				<a href="/"></a>Home
+				<a href="/">Home</a>
 			</ul>
 			<ul class="hover:gradient-text ease-linear transition duration-200">
 				<a href="/marketplace">Marketplace</a>
@@ -61,17 +62,29 @@ import ButtonDeco2 from "../assets/button-deco-br.svg";
 	</div>
 </div>
 
-<div class="darkness fixed bg-black/50 h-screen w-screen z-10 hidden"></div>
 <div
-	class="nav-menu fixed h-screen top-0 pt-16 right-[-500px] pr-6 pl-10 bg-black shadow-black shadow-2xl z-20 hidden transition-[right 300ms]"
+	class="darkness fixed top-0 left-0 bg-black/50 h-screen w-screen z-10 hidden opacity-0 transition-opacity"
+	id="darkness"
+>
+</div>
+<div
+	class="nav-menu fixed h-screen top-0 pt-10 right-[-500px] pr-6 pl-10 bg-black shadow-black shadow-2xl z-20 hidden transition-all"
 	id="navMenu"
 >
+	<Image
+		src={CloseIcon}
+		height={40}
+		width={40}
+		alt="close navigation menu"
+		id="closeBtn"
+		class="ml-auto mb-4"
+	/>
 	<nav class="navlinks">
 		<ul
 			class="flex items-end flex-col gap-8 font-heading font-semibold text-[1.5rem]"
 		>
 			<ul class="hover:gradient-text ease-linear transition duration-200">
-				<a href="/"></a>Home
+				<a href="/">Home</a>
 			</ul>
 			<ul class="hover:gradient-text ease-linear transition duration-200">
 				<a href="/marketplace">Marketplace</a>
@@ -91,9 +104,35 @@ import ButtonDeco2 from "../assets/button-deco-br.svg";
 
 <script>
 	const Btn = document.getElementById("menuBtn");
+	const closeBtn = document.getElementById("closeBtn");
 	const Menu = document.getElementById("navMenu");
-	Btn?.addEventListener("click", () => {
-		Menu?.style.setProperty("display", "block");
-		Menu?.style.setProperty("right", "0");
+	const Darkness = document.getElementById("darkness");
+	Btn?.addEventListener(
+		"click",
+		() => {
+			Menu?.style.setProperty("display", "block");
+			Darkness?.style.setProperty("display", "block");
+			setTimeout(() => {
+				Menu?.style.setProperty("right", "0");
+				Darkness?.style.setProperty("opacity", "1");
+			});
+		},
+		10
+	);
+	closeBtn?.addEventListener("click", () => {
+		Menu?.style.setProperty("right", "-500px");
+		Darkness?.style.setProperty("opacity", "0");
+		setTimeout(() => {
+			Menu?.style.setProperty("display", "none");
+			Darkness?.style.setProperty("display", "none");
+		}, 150);
+	});
+	Darkness?.addEventListener("click", () => {
+		Menu?.style.setProperty("right", "-500px");
+		Darkness?.style.setProperty("opacity", "0");
+		setTimeout(() => {
+			Menu?.style.setProperty("display", "none");
+			Darkness?.style.setProperty("display", "none");
+		}, 150);
 	});
 </script>

@@ -1,0 +1,102 @@
+---
+import Data from "../../../nft-data.json";
+import Layout from "../../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import Button from "../../../components/Button.astro";
+import Card from "../../../components/Card.astro";
+import "../../../app.css";
+
+export function getStaticPaths() {
+	let staticRoutes = [];
+	Data.forEach((element) => {
+		staticRoutes.push({ params: { itemid: element.id } });
+	});
+	return staticRoutes;
+}
+
+const { itemid } = Astro.params;
+let [itemData] = Data.filter((item) => item.id == itemid);
+---
+
+<Layout title="NDNFTs">
+	<div
+		class="container px-5 mx-auto flex gap-8 mt-16 flex-col lg:flex-row mb-10 h-fit"
+	>
+		<!-- nft image -->
+		<div class="w-full md:w-[50%] flex items-center">
+			<div
+				class="aspect-square h-auto w-full flex justify-end rounded-[32px]"
+				style={{
+					background: `url('/nft-images/${itemid}.jpg')`,
+					backgroundSize: "cover",
+				}}
+			>
+			</div>
+		</div>
+		<!-- nft data -->
+		<div
+			class="lg:w-[50%] flex flex-col justify-center gap-4 border-white/30 border-2 rounded-[32px] p-5 h-full"
+		>
+			<h1>{itemData.title}</h1>
+			<p>
+				Lorem ipsum dolor sit amet consectetur. Faucibus velit elit nibh
+				enim. Auctor turpis tellus vivamus ultricies in quisque. In eu
+				ante at pellentesque.
+			</p>
+			<div class="flex gap-3 items-center">
+				<h4>Royalties</h4>
+				<p
+					class="border-pink/50 border gradient-text px-2 py-1 font-semibold text-black rounded-xl"
+				>
+					10%
+				</p>
+			</div>
+			<div class="flex items-center gap-4">
+				<div
+					class="w-16 h-16 bg-[url('/defaultauthor.jpg')] bg-cover rounded-full"
+				>
+				</div>
+				<div class="flex flex-col">
+					<h4 class="text-white/70 text-xl mb-[-0.5rem]">
+						Current Owner
+					</h4>
+					<h4>Mr. Bluehat</h4>
+				</div>
+			</div>
+			<div
+				class="flex flex-col border-white/30 border-2 w-full p-4 rounded-2xl"
+			>
+				<h4 class="text-white/70 text-xl mb-[-0.5rem]">Price</h4>
+				<h4>{Data[itemid].price}</h4>
+			</div>
+			<div class="flex flex-col gap-4 md:flex-row">
+				<Button variant="primary" href="/connect" fwidth={true}
+					>Place a bid</Button
+				>
+				<Button variant="secondary" href="/connect" fwidth={true}
+					>Auto bid</Button
+				>
+			</div>
+		</div>
+	</div>
+	<div class="container px-5 mx-auto">
+		<div class="border-white/30 border-2 rounded-3xl px-8 pb-8">
+			<h3 class="mb-2 mt-5">You might also like</h3>
+			<p class="opacity-80 mb-4">Based on your choice.</p>
+			<div class="flex gap-8 overflow-x-scroll no-scrollbar">
+				{
+					Data.map((i) => {
+						return (
+							<Card
+								title={i.title}
+								image={`/nft-images/${i.id}.jpg`}
+								id={i.id}
+								price={i.price}
+							/>
+						);
+					})
+				}
+			</div>
+		</div>
+	</div>
+</Layout>

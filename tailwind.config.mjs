@@ -16,6 +16,7 @@ export default {
 			"dark-blue": "#1662A9",
 			yellow: "#FED917",
 			pink: "#F68BBE",
+			transparent: "transparent",
 		},
 	},
 	plugins: [],

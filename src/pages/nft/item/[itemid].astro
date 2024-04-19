@@ -1,13 +1,12 @@
 ---
 import Data from "../../../nft-data.json";
 import Layout from "../../../layouts/Layout.astro";
-import { Image } from "astro:assets";
 import Button from "../../../components/Button.astro";
 import Card from "../../../components/Card.astro";
 import "../../../app.css";
 
 export function getStaticPaths() {
-	let staticRoutes = [];
+	let staticRoutes: any = [];
 	Data.forEach((element) => {
 		staticRoutes.push({ params: { itemid: element.id } });
 	});
@@ -67,7 +66,7 @@ let [itemData] = Data.filter((item) => item.id == itemid);
 				class="flex flex-col border-white/30 border-2 w-full p-4 rounded-2xl"
 			>
 				<h4 class="text-white/70 text-xl mb-[-0.5rem]">Price</h4>
-				<h4>{Data[itemid].price}</h4>
+				<h4>{itemData.price}</h4>
 			</div>
 			<div class="flex flex-col gap-4 md:flex-row">
 				<Button variant="primary" href="/connect" fwidth={true}
